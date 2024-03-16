@@ -11,12 +11,14 @@ import {MatCardModule} from "@angular/material/card";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatButtonModule} from "@angular/material/button";
 import {HttpClientModule} from "@angular/common/http";
+import { CartComponent } from './Components/cart/cart/cart.component';
 
 
 @NgModule({
   declarations: [
     CustomerComponent,
-    DashboardComponent
+    DashboardComponent,
+    CartComponent
   ],
   imports: [
     CommonModule,

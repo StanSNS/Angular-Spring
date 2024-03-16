@@ -35,11 +35,12 @@ public class CartItems extends BaseEntity {
     @JsonIgnore
     private Order order;
 
+    @JsonIgnore
     public CartItemsDTO getCartDTO() {
         CartItemsDTO cartItemsDTO = new CartItemsDTO();
         cartItemsDTO.setId(getId());
         cartItemsDTO.setPrice(getPrice());
-        cartItemsDTO.setProductId(product.getId());
+        cartItemsDTO.setProductId(getProduct().getId());
         cartItemsDTO.setQuantity(getQuantity());
         cartItemsDTO.setUserId(getUser().getId());
         cartItemsDTO.setProductName(getProduct().getName());

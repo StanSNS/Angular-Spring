@@ -35,8 +35,8 @@ public class Product extends BaseEntity {
         productDTO.setPrice(getPrice());
         productDTO.setDescription(getDescription());
         productDTO.setByteImage(getImage());
-        productDTO.setCategoryId(category.getId());
-        productDTO.setCategoryName(category.getName());
+        productDTO.setCategoryId(getCategory().getId());
+        productDTO.setCategoryName(getCategory().getName());
         return productDTO;
 
     }

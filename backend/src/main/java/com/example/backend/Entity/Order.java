@@ -30,5 +30,22 @@ public class Order extends BaseEntity {
     private User user;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "order")
+    @JsonIgnore
     private List<CartItems> cartItems;
+
+    @Override
+    public String toString() {
+        return "Order{" +
+                "id=" + getId() +
+                ", orderDescription='" + orderDescription + '\'' +
+                ", date=" + date +
+                ", amount=" + amount +
+                ", address='" + address + '\'' +
+                ", payment='" + payment + '\'' +
+                ", orderStatus=" + orderStatus +
+                ", totalAmount=" + totalAmount +
+                ", discount=" + discount +
+                ", trackingId=" + trackingId +
+                '}';
+    }
 }

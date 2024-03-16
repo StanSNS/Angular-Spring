@@ -77,6 +77,7 @@ public class CartService {
         orderDTO.setDiscount(activeOrder.getDiscount());
         orderDTO.setTotalAmount(activeOrder.getTotalAmount());
         orderDTO.setCartItems(activeOrder.getCartItems().stream().map(CartItems::getCartDTO).collect(Collectors.toList()));
+
         return orderDTO;
     }
 }
