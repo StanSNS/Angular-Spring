@@ -1,6 +1,6 @@
 package com.example.backend.Controller.customer;
 
-import com.example.backend.DTO.product.ProductDTO;
+import com.example.backend.DTO.ProductDTO;
 import com.example.backend.Service.customer.CustomerProductService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;

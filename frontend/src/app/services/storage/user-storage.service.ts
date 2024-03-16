@@ -34,7 +34,7 @@ export class UserStorageService {
     if (user == null) {
       return ""
     }
-    return user.userId;
+    return user.userID;
   }
 
   static getUserRike(): string {

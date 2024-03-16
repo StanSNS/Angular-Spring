@@ -1,6 +1,6 @@
 package com.example.backend.Service.admin.product;
 
-import com.example.backend.DTO.product.ProductDTO;
+import com.example.backend.DTO.ProductDTO;
 import com.example.backend.Entity.Category;
 import com.example.backend.Entity.Product;
 import com.example.backend.Repository.CategoryRepository;

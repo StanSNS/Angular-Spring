@@ -1,6 +1,6 @@
 package com.example.backend.Service.admin.category;
 
-import com.example.backend.DTO.category.CategoryDTO;
+import com.example.backend.DTO.CategoryDTO;
 import com.example.backend.Entity.Category;
 import com.example.backend.Repository.CategoryRepository;
 import lombok.RequiredArgsConstructor;

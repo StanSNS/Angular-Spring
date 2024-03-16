@@ -25,6 +25,14 @@ export class CustomerService {
     })
   }
 
+  addToCart (productId:any): Observable<any>{
+    const cartDTO ={
+      productId:productId,
+      userId: UserStorageService.getUserId()
+    }
+    return this.http.post(BASE_URL + `api/customer/cart`,cartDTO,{headers: this.createAuthHeader(),})
+  }
+
   private createAuthHeader():HttpHeaders{
     return new HttpHeaders().set("Authorization", 'Bearer ' + UserStorageService.getToken());
   }

@@ -1,6 +1,6 @@
 package com.example.backend.Entity;
 
-import com.example.backend.DTO.product.ProductDTO;
+import com.example.backend.DTO.ProductDTO;
 import com.example.backend.Entity.Base.BaseEntity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;

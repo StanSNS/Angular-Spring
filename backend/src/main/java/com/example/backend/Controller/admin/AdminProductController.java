@@ -1,6 +1,6 @@
 package com.example.backend.Controller.admin;
 
-import com.example.backend.DTO.product.ProductDTO;
+import com.example.backend.DTO.ProductDTO;
 import com.example.backend.Service.admin.product.AdminProductService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;

@@ -1,7 +1,7 @@
 package com.example.backend.Service.auth;
 
-import com.example.backend.DTO.auth.RegisterDTO;
-import com.example.backend.DTO.auth.UserDTO;
+import com.example.backend.DTO.RegisterDTO;
+import com.example.backend.DTO.UserDTO;
 import com.example.backend.Entity.Order;
 import com.example.backend.Entity.User;
 import com.example.backend.Enums.OrderStatus;
