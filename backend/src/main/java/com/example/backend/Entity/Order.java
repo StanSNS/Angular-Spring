@@ -1,5 +1,6 @@
 package com.example.backend.Entity;
 
+import com.example.backend.DTO.OrderDTO;
 import com.example.backend.Entity.Base.BaseEntity;
 import com.example.backend.Enums.OrderStatus;
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -29,6 +30,11 @@ public class Order extends BaseEntity {
     @JsonIgnore
     private User user;
 
+    @OneToOne(cascade = CascadeType.MERGE)
+    @JoinColumn(name = "coupon_id", referencedColumnName = "id")
+    @JsonIgnore
+    private Coupon coupon;
+
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "order")
     @JsonIgnore
     private List<CartItems> cartItems;
@@ -47,5 +53,24 @@ public class Order extends BaseEntity {
                 ", discount=" + discount +
                 ", trackingId=" + trackingId +
                 '}';
+    }
+
+    public OrderDTO getOrderDTO(){
+        OrderDTO orderDTO = new OrderDTO();
+
+        orderDTO.setId(getId());
+        orderDTO.setOrderDescription(getOrderDescription());
+        orderDTO.setAddress(getAddress());
+        orderDTO.setTrackingId(getTrackingId());
+        orderDTO.setAmount(getAmount());
+        orderDTO.setDate(getDate());
+        orderDTO.setOrderStatus(getOrderStatus());
+        orderDTO.setUserName(getUser().getName());
+
+        if(coupon != null){
+            orderDTO.setCouponName(coupon.getName());
+        }
+
+        return orderDTO;
     }
 }
