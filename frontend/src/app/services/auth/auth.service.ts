@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
-import {map, Observable, pipe} from "rxjs";
+import {map, Observable} from "rxjs";
 import {UserStorageService} from "../storage/user-storage.service";
 
 const BASE_URL = "http://localhost:8080/";
@@ -10,7 +10,8 @@ const BASE_URL = "http://localhost:8080/";
 })
 export class AuthService {
 
-  constructor(private http: HttpClient, private userStorageService: UserStorageService) {}
+  constructor(private http: HttpClient, private userStorageService: UserStorageService) {
+  }
 
   register(registerDTO: any): Observable<any> {
     return this.http.post(BASE_URL + "register", registerDTO);

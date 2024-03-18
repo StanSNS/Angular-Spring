@@ -1,0 +1,22 @@
+/* not-found.component.css */
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.error-message {
+  text-align: center;
+}
+
+.error-message h2 {
+  font-size: 3rem;
+  margin-bottom: 20px;
+}
+
+.error-message p {
+  font-size: 1.5rem;
+  color: #666;
+}

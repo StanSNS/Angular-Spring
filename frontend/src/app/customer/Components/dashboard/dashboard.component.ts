@@ -25,7 +25,6 @@ export class DashboardComponent {
   getAllProducts() {
     this.products = [];
     this.customerService.getAllProducts().subscribe(res => {
-      console.log(res)
       res.forEach(element => {
         element.processedImg = 'data:image/jpeg;base64,' + element.byteImage;
         this.products.push(element);

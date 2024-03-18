@@ -63,9 +63,6 @@ export class PostProductComponent {
       formData.append('description', this.productForm.get('description').value);
       formData.append('price', this.productForm.get('price').value);
 
-
-      console.log(formData)
-
       this.adminService.addProduct(formData).subscribe((res) => {
         if (res.id != null) {
           this.snackBar.open('Product posted.', 'Close', {duration: 5000});

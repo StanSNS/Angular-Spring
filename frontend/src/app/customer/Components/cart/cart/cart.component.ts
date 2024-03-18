@@ -3,7 +3,6 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {CustomerService} from "../../../services/customer.service";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {MatDialog} from "@angular/material/dialog";
-import {elementAt, isEmpty} from "rxjs";
 import {PlaceOrderComponent} from "../../place-order/place-order.component";
 
 @Component({

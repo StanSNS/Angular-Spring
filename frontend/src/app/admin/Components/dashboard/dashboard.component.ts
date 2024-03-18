@@ -49,7 +49,6 @@ export class DashboardComponent {
         this.snackBar.open('Product Deleted', 'Close', {duration: 5000});
         this.getAllProducts();
       } else {
-        console.log("vlizame tuike")
         this.snackBar.open(res.message, 'Close', {duration: 5000, panelClass: 'error-snackbar'});
       }
     })
