@@ -16,6 +16,7 @@
 
   <!-- Display products if available -->
   <mat-card class="product-card" *ngFor="let product of products">
+
     <div class="product-image">
       <img [src]="product.processedImg" alt="product-image">
     </div>
@@ -23,7 +24,6 @@
     <div class="product-details">
       <h2 class="product-name">{{product.name}}</h2>
       <p class="product-description">{{product.description}}</p>
-      <mat-divider></mat-divider>
 
       <div class="product-info">
         <div class="info-row">
@@ -35,7 +35,6 @@
           <span class="info-value">{{product.categoryName}}</span>
         </div>
       </div>
-      <mat-divider></mat-divider>
       <div class="actions">
         <button mat-raised-button color="warn" class="delete-button" (click)="deleteProduct(product.id)">Delete</button>
       </div>
