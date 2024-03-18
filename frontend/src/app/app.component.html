@@ -1,33 +1,60 @@
-<div *ngIf="!isCustomerLoggedIn && !isAdminLoggedIn">
-  <mat-toolbar color="primary" class="navbar">
-    <span class="navbar-brand">GYM</span>
-    <span class="spacer"></span>
-    <button mat-button routerLink="/register" routerLinkActive="active">Register</button>
-    <button mat-button routerLink="/login" routerLinkActive="active">Login</button>
+<div>
+  <mat-toolbar color="accent" class="navbar">
+
+    <span class="logoContainer">
+      <mat-icon>fitness_center</mat-icon>
+      <span class="navbar-brand">GYM</span>
+    </span>
+
+    <div>
+      <button mat-button routerLink="/register" routerLinkActive="active"
+              *ngIf="!isCustomerLoggedIn && !isAdminLoggedIn">
+        <mat-icon>person_add</mat-icon>
+        Register
+      </button>
+      <button mat-button routerLink="/login" routerLinkActive="active" *ngIf="!isCustomerLoggedIn && !isAdminLoggedIn">
+        <mat-icon>login</mat-icon>
+        Login
+      </button>
+      <button mat-button routerLink="/admin/dashboard" routerLinkActive="active" *ngIf="isAdminLoggedIn">
+        <mat-icon>dashboard</mat-icon>
+        Dashboard
+      </button>
+      <button mat-button routerLink="/admin/category" routerLinkActive="active" *ngIf="isAdminLoggedIn">
+        <mat-icon>category</mat-icon>
+        Category
+      </button>
+      <button mat-button routerLink="/admin/product" routerLinkActive="active" *ngIf="isAdminLoggedIn">
+        <mat-icon>explore</mat-icon>
+        Product</button>
+      <button mat-button routerLink="/admin/orders" routerLinkActive="active" *ngIf="isAdminLoggedIn">
+        <mat-icon>assignment</mat-icon>
+        Orders</button>
+      <button mat-button routerLink="/admin/post-coupon" routerLinkActive="active" *ngIf="isAdminLoggedIn">
+        <mat-icon>receipt</mat-icon>
+        Post-Coupon
+      </button>
+      <button mat-button routerLink="/admin/coupons" routerLinkActive="active" *ngIf="isAdminLoggedIn">
+        <mat-icon>local_offer</mat-icon>
+        Coupons</button>
+      <button mat-button routerLink="/customer/dashboard" routerLinkActive="active" *ngIf="isCustomerLoggedIn">
+        <mat-icon>dashboard</mat-icon>
+        Dashboard
+      </button>
+
+      <button mat-button routerLink="/customer/cart" routerLinkActive="active" *ngIf="isCustomerLoggedIn">
+        <mat-icon>shopping_cart</mat-icon>
+        Cart</button>
+    </div>
+
+    <div *ngIf="isCustomerLoggedIn || isAdminLoggedIn">
+      <button mat-button routerLinkActive="active" (click)="logout()">
+        Logout
+        <mat-icon>exit_to_app</mat-icon>
+      </button>
+    </div>
+
   </mat-toolbar>
 </div>
 
-<div *ngIf="isAdminLoggedIn">
-  <mat-toolbar color="primary" class="navbar">
-    <span class="navbar-brand">GYM</span>
-    <span class="spacer"></span>
-    <button mat-button routerLink="/admin/dashboard" routerLinkActive="active">Dashboard</button>
-    <button mat-button routerLink="/admin/category" routerLinkActive="active">Category</button>
-    <button mat-button routerLink="/admin/product" routerLinkActive="active">Product</button>
-    <button mat-button routerLink="/admin/orders" routerLinkActive="active">Orders</button>
-    <button mat-button routerLink="/admin/post-coupon" routerLinkActive="active">Post-Coupon</button>
-    <button mat-button routerLink="/admin/coupons" routerLinkActive="active">Coupons</button>
-    <button mat-button routerLinkActive="active" (click)="logout()">Logout</button>
-  </mat-toolbar>
-</div>
-
-<div *ngIf="isCustomerLoggedIn">
-  <mat-toolbar color="primary" class="navbar">
-    <span class="navbar-brand">GYM</span>
-    <span class="spacer"></span>
-    <button mat-button routerLink="/customer/dashboard" routerLinkActive="active">Dashboard</button>
-    <button mat-button routerLink="/customer/cart" routerLinkActive="active">Cart</button>
-    <button mat-button routerLinkActive="active" (click)="logout()">Logout</button>
-  </mat-toolbar>
-</div>
 <router-outlet></router-outlet>

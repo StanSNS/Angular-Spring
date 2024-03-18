@@ -10,6 +10,15 @@ mat-card {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
+.titleWithIcon{
+  display: flex;
+  align-items: center;
+}
+
+.titleWithIcon mat-icon{
+  margin-right: 0.5rem;
+}
+
 table {
   width: 100%;
 }

@@ -14,6 +14,15 @@ table {
   width: 100%;
 }
 
+.titleWithIcon{
+  display: flex;
+  align-items: center;
+}
+
+.titleWithIcon mat-icon{
+  margin-right: 0.5rem;
+}
+
 th.mat-header-cell {
   font-weight: bolder;
   color: #003973;

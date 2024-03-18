@@ -10,6 +10,13 @@
   margin-right: 15px;
 }
 
+.no-products-message {
+  text-align: center;
+  font-weight: bold;
+  font-size: 40px;
+  color: #fd4080;
+}
+
 .search-input input {
   padding-right: 40px;
 }

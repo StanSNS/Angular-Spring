@@ -9,6 +9,12 @@
 </form>
 
 <div class=product-list>
+
+  <!-- Check if products array is empty -->
+  <div *ngIf="products.length === 0" class="no-products-message">
+    No products available.
+  </div>
+
   <mat-card class="product-card" *ngFor="let product of products">
     <div class="product-image">
       <img [src]="product.processedImg" alt="product-image">

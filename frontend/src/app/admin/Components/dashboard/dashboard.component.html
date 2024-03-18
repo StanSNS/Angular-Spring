@@ -8,7 +8,13 @@
   </mat-form-field>
 </form>
 
-<div class=product-list>
+<div class="product-list">
+  <!-- Check if products array is empty -->
+  <div *ngIf="products.length === 0" class="no-products-message">
+    No products available.
+  </div>
+
+  <!-- Display products if available -->
   <mat-card class="product-card" *ngFor="let product of products">
     <div class="product-image">
       <img [src]="product.processedImg" alt="product-image">
@@ -31,8 +37,6 @@
       </div>
       <mat-divider></mat-divider>
       <div class="actions">
-        <button mat-raised-button color="primary" class="update-button" [routerLink]="'/admin/faq' + product.id">FAQ</button>
-        <button mat-raised-button color="accent" class="update-button" [routerLink]="'/admin/faq' + product.id">Update</button>
         <button mat-raised-button color="warn" class="delete-button" (click)="deleteProduct(product.id)">Delete</button>
       </div>
     </div>
