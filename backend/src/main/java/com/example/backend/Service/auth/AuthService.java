@@ -57,7 +57,7 @@ public class AuthService {
             user.setEmail("admin@abv.bg");
             user.setName("admin");
             user.setRole(UserRole.ADMIN);
-            user.setPassword(new BCryptPasswordEncoder().encode("admin"));
+            user.setPassword(new BCryptPasswordEncoder().encode("admin@abv.bg"));
             userRepository.save(user);
         }
     }

@@ -15,7 +15,7 @@ public class Product extends BaseEntity {
     private String name;
     private Long price;
 
-    @Lob
+    @Column(columnDefinition = "LONGTEXT")
     private String description;
 
     @Lob

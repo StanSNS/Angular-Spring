@@ -1,6 +1,7 @@
 package com.example.backend.Entity;
 
 import com.example.backend.Entity.Base.BaseEntity;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Lob;
 import jakarta.persistence.Table;
@@ -13,7 +14,7 @@ public class Category extends BaseEntity {
 
     private String name;
 
-    @Lob
+    @Column(columnDefinition = "LONGTEXT")
     private String description;
 
 }
