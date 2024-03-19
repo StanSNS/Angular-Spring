@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 import {AdminService} from "../../service/admin.service";
 import {MatSnackBar} from "@angular/material/snack-bar";
+import {OrderDTO} from "../../../interface/GlobalTypes";
 
 @Component({
   selector: 'app-orders',
@@ -9,7 +10,7 @@ import {MatSnackBar} from "@angular/material/snack-bar";
 })
 export class OrdersComponent {
 
-  orders: any;
+  orders: OrderDTO[];
 
   constructor(private adminService: AdminService, private snackBar: MatSnackBar) {
   }

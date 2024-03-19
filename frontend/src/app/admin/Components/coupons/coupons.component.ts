@@ -1,5 +1,6 @@
 import {Component} from '@angular/core';
 import {AdminService} from "../../service/admin.service";
+import {Coupon} from "../../../interface/GlobalTypes";
 
 @Component({
   selector: 'app-coupons',
@@ -8,7 +9,7 @@ import {AdminService} from "../../service/admin.service";
 })
 export class CouponsComponent {
 
-  coupons: any;
+  coupons: Coupon[];
 
   constructor(private adminService: AdminService) {
   }

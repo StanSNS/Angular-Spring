@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {map, Observable} from "rxjs";
 import {UserStorageService} from "../storage/user-storage.service";
+import {RegisterDTO} from "../../interface/GlobalTypes";
 
 const BASE_URL = "http://localhost:8080/";
 
@@ -13,17 +14,17 @@ export class AuthService {
   constructor(private http: HttpClient, private userStorageService: UserStorageService) {
   }
 
-  register(registerDTO: any): Observable<any> {
+  register(registerDTO: RegisterDTO): Observable<any> {
     return this.http.post(BASE_URL + "register", registerDTO);
   }
 
-  login(email: string, password: string): any {
+  login(email: string, password: string): Observable<boolean> {
     const headers = new HttpHeaders().set('Content-Type', 'application/json');
     const body = {email, password};
 
     return this.http.post(BASE_URL + 'login', body, {headers, observe: 'response'}).pipe(
       map((res) => {
-        const token = res.headers.get('authorization').substring(7);
+        const token = res.headers.get('authorization')?.substring(7);
         const user = res.body;
 
         if (token && user) {

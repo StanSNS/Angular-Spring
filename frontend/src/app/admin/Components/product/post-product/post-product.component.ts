@@ -3,6 +3,7 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {AdminService} from "../../../service/admin.service";
 import {Router} from "@angular/router";
+import {Category} from "../../../../interface/GlobalTypes";
 
 @Component({
   selector: 'app-post-product',
@@ -12,7 +13,7 @@ import {Router} from "@angular/router";
 export class PostProductComponent {
 
   productForm: FormGroup;
-  listOfCategories: any = [];
+  listOfCategories: Category[] = [];
   selectedFile: File | null;
   imagePreview: string | ArrayBuffer | null;
 
@@ -23,9 +24,12 @@ export class PostProductComponent {
     private router: Router) {
   }
 
-  onFileSelected(event: any) {
-    this.selectedFile = event.target.files[0];
-    this.previewImage();
+  onFileSelected(event: Event) {
+    const inputElement = event.target as HTMLInputElement;
+    if (inputElement && inputElement.files && inputElement.files.length > 0) {
+      this.selectedFile = inputElement.files[0];
+      this.previewImage();
+    }
   }
 
   previewImage() {

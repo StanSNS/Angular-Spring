@@ -1,7 +1,8 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {UserStorageService} from "../../services/storage/user-storage.service";
+import {CategoryDTO, CouponDTO, ProductDTO} from "../../interface/GlobalTypes";
 
 const BASE_URL = "http://localhost:8080/"
 
@@ -10,69 +11,68 @@ const BASE_URL = "http://localhost:8080/"
 })
 export class AdminService {
 
-  constructor(private http:HttpClient) { }
+  constructor(private http: HttpClient) {
+  }
 
-  addCategory(categoryDTO:any): Observable<any>{
-    return this.http.post(BASE_URL + "api/admin/category",categoryDTO,{
+  addCategory(categoryDTO: CategoryDTO): Observable<any> {
+    return this.http.post(BASE_URL + "api/admin/category", categoryDTO, {headers: this.createAuthHeader(),})
+  }
+
+  getAllCategories(): Observable<any> {
+    return this.http.get(BASE_URL + "api/admin", {
       headers: this.createAuthHeader(),
     })
   }
 
-  getAllCategories(): Observable<any>{
-    return this.http.get(BASE_URL + "api/admin",{
+  addProduct(productDTO: FormData): Observable<any> {
+    return this.http.post(BASE_URL + "api/admin/product", productDTO, {
       headers: this.createAuthHeader(),
     })
   }
 
-  addProduct(productDTO:any): Observable<any>{
-    return this.http.post(BASE_URL + "api/admin/product",productDTO,{
+  getAllProducts(): Observable<any> {
+    return this.http.get(BASE_URL + "api/admin/products", {
       headers: this.createAuthHeader(),
     })
   }
 
-  getAllProducts(): Observable<any>{
-    return this.http.get(BASE_URL + "api/admin/products",{
+  getAllProductsByName(name: string): Observable<any> {
+    return this.http.get(BASE_URL + `api/admin/search/${name}`, {
       headers: this.createAuthHeader(),
     })
   }
 
-  getAllProductsByName (name:string): Observable<any>{
-    return this.http.get(BASE_URL + `api/admin/search/${name}`,{
+  deleteProduct(productId: string): Observable<any> {
+    return this.http.delete(BASE_URL + `api/admin/product/${productId}`, {
       headers: this.createAuthHeader(),
     })
   }
 
-  deleteProduct(productId:any): Observable<any>{
-    return this.http.delete(BASE_URL + `api/admin/product/${productId}`,{
+  addCoupon(couponDTO: CouponDTO): Observable<any> {
+    return this.http.post(BASE_URL + "api/admin/coupons", couponDTO, {
       headers: this.createAuthHeader(),
     })
   }
 
-  addCoupon(couponDTO:any): Observable<any>{
-    return this.http.post(BASE_URL + "api/admin/coupons",couponDTO,{
+  getCoupons(): Observable<any> {
+    return this.http.get(BASE_URL + "api/admin/coupons", {
       headers: this.createAuthHeader(),
     })
   }
 
-  getCoupons(): Observable<any>{
-    return this.http.get(BASE_URL + "api/admin/coupons",{
+  getPlacedOrders(): Observable<any> {
+    return this.http.get(BASE_URL + "api/admin/placedOrders", {
       headers: this.createAuthHeader(),
     })
   }
 
-  getPlacedOrders(): Observable<any>{
-    return this.http.get(BASE_URL + "api/admin/placedOrders",{
+  changeOrderStatus(orderId: number, status: string): Observable<any> {
+    return this.http.get(BASE_URL + `api/admin/order/${orderId}/${status}`, {
       headers: this.createAuthHeader(),
     })
   }
 
-  changeOrderStatus(orderId:number, status:string): Observable<any>{
-    return this.http.get(BASE_URL + `api/admin/order/${orderId}/${status}`,{
-      headers: this.createAuthHeader(),
-    })
-  }
-
-  private createAuthHeader():HttpHeaders{
+  private createAuthHeader(): HttpHeaders {
     return new HttpHeaders().set("Authorization", 'Bearer ' + UserStorageService.getToken());
   }
 

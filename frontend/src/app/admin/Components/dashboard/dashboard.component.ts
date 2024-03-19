@@ -2,6 +2,7 @@ import {Component} from '@angular/core';
 import {AdminService} from "../../service/admin.service";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {MatSnackBar} from "@angular/material/snack-bar";
+import {ProductDTO} from "../../../interface/GlobalTypes";
 
 @Component({
   selector: 'app-dashboard',
@@ -9,7 +10,7 @@ import {MatSnackBar} from "@angular/material/snack-bar";
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent {
-  products: any[] = [];
+  products: ProductDTO[] = [];
   searchProductForm!: FormGroup;
 
   constructor(private adminService: AdminService, private fb: FormBuilder, private snackBar: MatSnackBar) {

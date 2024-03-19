@@ -1,4 +1,5 @@
 import {Injectable} from '@angular/core';
+import {savedUser} from "../../interface/GlobalTypes";
 
 const TOKEN = 'Gym-token'
 const USER = 'Gym-user'
@@ -25,7 +26,7 @@ export class UserStorageService {
     return localStorage.getItem(TOKEN);
   }
 
-  static getUser(): any {
+  static getUser(): savedUser {
     return JSON.parse(localStorage.getItem(USER));
   }
 

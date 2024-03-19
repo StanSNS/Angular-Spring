@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {Observable} from "rxjs";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {UserStorageService} from "../../services/storage/user-storage.service";
+import {OrderDTO, PlaceOrderDTO} from "../../interface/GlobalTypes";
 
 
 const BASE_URL = "http://localhost:8080/"
@@ -13,7 +14,6 @@ export class CustomerService {
 
   constructor(private http: HttpClient) {
   }
-
 
   getAllProducts(): Observable<any> {
     return this.http.get(BASE_URL + "api/customer/products", {
@@ -27,7 +27,7 @@ export class CustomerService {
     })
   }
 
-  addToCart(productId: any): Observable<any> {
+  addToCart(productId: string): Observable<any> {
     const cartDTO = {
       productId: productId,
       userId: UserStorageService.getUserId()
@@ -35,7 +35,7 @@ export class CustomerService {
     return this.http.post(BASE_URL + `api/customer/cart`, cartDTO, {headers: this.createAuthHeader(),})
   }
 
-  increaseProductQuantity(productId: any): Observable<any> {
+  increaseProductQuantity(productId: string): Observable<any> {
     const cartDTO = {
       productId: productId,
       userId: UserStorageService.getUserId()
@@ -43,7 +43,7 @@ export class CustomerService {
     return this.http.post(BASE_URL + `api/customer/addition`, cartDTO, {headers: this.createAuthHeader(),})
   }
 
-  decreaseProductQuantity(productId: any): Observable<any> {
+  decreaseProductQuantity(productId: string): Observable<any> {
     const cartDTO = {
       productId: productId,
       userId: UserStorageService.getUserId()
@@ -56,14 +56,14 @@ export class CustomerService {
     return this.http.get(BASE_URL + `api/customer/cart/${userId}`, {headers: this.createAuthHeader(),})
   }
 
-  applyCoupon(code: any): Observable<any> {
+  applyCoupon(code: number): Observable<any> {
     const userId = UserStorageService.getUserId();
     return this.http.get(BASE_URL + `api/customer/coupon/${userId}/${code}`, {headers: this.createAuthHeader(),})
   }
 
-  placeOrder(orderDTO: any): Observable<any> {
-    orderDTO.userId = UserStorageService.getUserId();
-    return this.http.post(BASE_URL + `api/customer/placeOrder`, orderDTO, {headers: this.createAuthHeader(),})
+  placeOrder(placeOrderDTO: PlaceOrderDTO): Observable<any> {
+    placeOrderDTO.userId = UserStorageService.getUserId();
+    return this.http.post(BASE_URL + `api/customer/placeOrder`, placeOrderDTO, {headers: this.createAuthHeader(),})
   }
 
   private createAuthHeader(): HttpHeaders {
